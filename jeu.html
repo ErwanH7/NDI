@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop - Poubelle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #game-area {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: lightblue;
+        }
+
+        .dechet {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            cursor: grab;
+        }
+
+        .poubelle {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: gray;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-area">
+        <div class="poubelle" id="poubelle">Poubelle</div>
+    </div>
+
+    <script>
+        const gameArea = document.getElementById("game-area");
+        const poubelle = document.getElementById("poubelle");
+
+        // Fonction pour créer des déchets
+        function createDechet() {
+            const dechet = document.createElement("div");
+            dechet.classList.add("dechet");
+            dechet.style.backgroundColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            dechet.style.left = Math.random() * (window.innerWidth - 50) + "px";
+            dechet.style.top = "0px";
+            dechet.draggable = true;
+
+            // Événements de drag & drop
+            dechet.addEventListener("dragstart", (e) => {
+                e.dataTransfer.setData("text/plain", e.target.id);
+            });
+
+            dechet.addEventListener("dragend", () => {
+                gameArea.removeChild(dechet); // Supprime le déchet lorsqu'il est lâché
+            });
+
+            gameArea.appendChild(dechet);
+
+            // Faire tomber le déchet
+            let pos = 0;
+            const fallInterval = setInterval(() => {
+                pos += 2;
+                dechet.style.top = pos + "px";
+
+                if (pos > window.innerHeight) {
+                    clearInterval(fallInterval);
+                    gameArea.removeChild(dechet); // Supprime les déchets qui touchent le sol
+                }
+            }, 20);
+        }
+
+        // Lancer des déchets aléatoirement
+        setInterval(createDechet, 1000);
+
+        // Gestion de la poubelle
+        poubelle.addEventListener("dragover", (e) => {
+            e.preventDefault();
+        });
+
+        poubelle.addEventListener("drop", (e) => {
+            e.preventDefault();
+            const id = e.dataTransfer.getData("text/plain");
+            const dechet = document.getElementById(id);
+            if (dechet) {
+                gameArea.removeChild(dechet); // Supprime le déchet si mis dans la poubelle
+            }
+        });
+    </script>
+</body>
+</html>

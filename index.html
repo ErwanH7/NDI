@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Océan Humain Simulator 3000</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🌊 L’Océan Humain Simulator 3000 🌊</h1>
+    </header>
+
+    <main>
+        <!-- Avatar section -->
+        <div id="left-text">
+            <p>L'Océan Humain Simulator 3000</p>
+            <p>‎ </p>
+            <p>Chaque action sur un bouton influe sur la barre correspondante et réalise un événement en rapport à l'avatar</p>
+            <p>‎ </p>
+            <p><a href="https://discord.gg/mpMy9Gx3">Realisé par l'équipe Bugs Buster.</a></p>
+        </div>
+
+        <div id="left-text-2">
+            <p>
+                DEFIS :
+            </p>
+            <p>
+                <a href="index2.html">RetroGaming + Worst UI</a> <!-- Liens vers ta page-->
+            </p>
+        </div>
+
+        <div id="avatar-section">
+            <div id="avatar">
+                <img src="earthman.png" alt="Avatar de l'océan humain">
+                <div id="pollution-overlay"></div> <!-- Pollution générée dynamiquement -->
+            </div>
+            <div id="status">
+                <div class="bar">
+                    <label>Oxygène :</label>
+                    <div class = "progress-bar-bg">
+                        <div id="oxygen-bar" class="progress-bar"></div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <label>Pollution :</label>
+                    <div class = "progress-bar-bg">
+                        <div id="pollution-bar" class="progress-bar"></div>
+                    </div>
+                </div>
+                <div class="bar">
+                    <label>Température :</label>
+                    <div class = "progress-bar-bg">
+                        <div id="temperature-bar" class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions section -->
+        <section id="actions">
+            <button id="lungs-btn">🫁 Soigner les Poumons</button>
+            <button id="stomach-btn">🦈 Nettoyer l'Estomac</button>
+            <button id="heart-btn">❤️ Réparer le Cœur</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
