@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style4.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenue dans le Rétro-Gaming</h1>
+    </header>
+
+    <div class="image-container">
+        <div class="image retro-gaming"></div>
+        <div class="image retro-gaming1"></div>
+        <div class="image retro-gaming2">
+            <button id="invisibleButton" class="invisible-button">Easter Egg</button>
+        </div>
+    </div>
+
+
+    <!-- Overlay pour afficher l'image en plein écran -->
+    <div id="overlay" class="overlay" style="display: none;">
+        <div id="overlayContent" class="overlay-content">
+            <img src="blobfish.jpg" alt="Easter Egg" id="overlayImage" />
+            <button id="closeOverlay" class="close-overlay">Fermer</button>
+        </div>
+    </div>
+
+    <footer>
+        <p><a href="https://discord.gg/mpMy9Gx3" class="rainbow-text">Fait par la Bug Buster</a></p>
+    </footer>
+
+    <script>
+        for (let i = 0; i < 40; i++) {
+            let img = document.createElement('div');
+            img.classList.add('moving-image');
+            document.body.appendChild(img);
+        }
+    </script>
+    <script src="easterEgg.js" defer></script>
+</body>
+
+</html>
